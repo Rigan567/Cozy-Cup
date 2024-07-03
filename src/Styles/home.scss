@@ -1,0 +1,111 @@
+.home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  > section {
+    &:first-of-type {
+      // border: 2px solid red;
+      position: relative;
+      top: -5%;
+      height: 80%;
+      // border-radius: 0 0 60% 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .carousel .slide {
+        background: none;
+      }
+
+      .carousel_img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 65%;
+        width: inherit;
+        // border: 2px solid red;
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          // border: 2px solid darkblue;
+          background-color: rgba(0, 0, 0, 0.404);
+          border-radius: 0 0 30% 30%;
+        }
+
+        > img {
+          border-radius: 0 0 30% 30%;
+          height: 100%;
+          max-width: 100%;
+          object-fit: cover;
+          // border: 2px solid red;
+        }
+      }
+      > aside {
+        position: absolute;
+
+        background-color: transparent;
+        // border: 2px solid white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: azure;
+        > h5 {
+          font-family: $text1;
+          font-weight: 800;
+          font-size: 1.3vmax;
+        }
+        > h1 {
+          font: 800 5vmax $text1;
+        }
+        > p {
+          width: 80%;
+          letter-spacing: 2px;
+          margin-top: 2vmax;
+        }
+      }
+    }
+    &:last-of-type {
+      margin-top: 4vmax;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      // border: 2px solid darkblue;
+      padding: 20px;
+      border-radius: 10% 10% 0 10%;
+      // width: 50%;
+
+      > h5 {
+        font: 700 1rem $text2;
+        margin-bottom: 1vmax;
+      }
+      > p {
+        width: 60%;
+        position: relative;
+        // left: 20%;
+        line-height: 150%;
+        font-family: $text2;
+        letter-spacing: 1px;
+        font-size: 2.5rem;
+      }
+    }
+  }
+  > article {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > img {
+      width: 60%;
+      height: 80%;
+      border-radius: 20px;
+    }
+  }
+}

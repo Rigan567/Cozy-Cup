@@ -1,0 +1,65 @@
+nav {
+  position: sticky;
+  padding: 2px 0;
+  // top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 2vmax;
+  background-color: aliceblue;
+  z-index: 1;
+
+  .navBtn {
+    background: transparent;
+    border: none;
+    position: relative;
+    left: 2vmax;
+    cursor: pointer;
+
+    > svg {
+      height: 25px;
+      width: 25px;
+      color: var(--color1);
+
+      &:hover {
+        color: var(--color1_deep);
+      }
+    }
+  }
+  > .search_Box {
+    display: none;
+    width: 500px;
+    background-color: rgba(0, 0, 0, 0.26);
+    text-align: center;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+  }
+  > .nav_others {
+    width: 15vmax;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    > svg {
+      height: 25px;
+      width: 25px;
+      color: var(--color1);
+      cursor: pointer;
+      &:hover {
+        color: var(--color1_deep);
+      }
+    }
+    > a {
+      outline: none;
+      text-decoration: none;
+      color: var(--color1);
+      > svg {
+        height: 25px;
+        width: 25px;
+        &:hover {
+          color: var(--color1_deep);
+        }
+      }
+    }
+  }
+}
