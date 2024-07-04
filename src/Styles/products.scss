@@ -6,6 +6,9 @@
   > aside {
     display: flex;
     flex-direction: column;
+    // border: 2px solid black;
+    margin-left: 100px;
+    width: 90%;
 
     h1 {
       font: 800 3vmax $text1;
@@ -21,16 +24,20 @@
     gap: 3vmax;
     // border: 2px solid black;
     justify-content: center;
-    a {
-      transition: 0.5s;
+    .nav-link {
+      transition: 0.5s ease;
       text-decoration: none;
       // border: 2px solid black;
-
       padding: 10px;
       border-radius: 20px;
       font: 400 1.2rem $text1;
       color: white;
       background-color: rgb(87, 216, 216);
+      &.active {
+        background-color: rgb(52, 158, 158);
+        transform: scale(1.05);
+        filter: drop-shadow(3px 3px 2px rgb(6, 20, 20));
+      }
       &:hover {
         background-color: rgb(52, 158, 158);
       }
@@ -116,6 +123,41 @@
           &:hover {
             background-color: rgb(133, 73, 133);
           }
+        }
+      }
+    }
+  }
+  .pagination {
+    margin-top: 2vmax;
+    display: flex;
+    justify-content: center;
+    padding: 3rem 0;
+    // border: 2px solid black;
+    min-width: 100%;
+    list-style: none;
+    margin-bottom: 2vmax;
+    position: relative;
+    bottom: 50px;
+
+    .page-item {
+      margin: 0 0.5rem;
+      // border: 1px solid red;
+
+      &.active .page-link {
+        background-color: var(--color1);
+        color: white;
+      }
+
+      .page-link {
+        border: 1px solid var(--color1);
+        border-radius: 20px;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: var(--color1);
+          color: white;
         }
       }
     }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { BsCupHotFill } from "react-icons/bs";
+import { NavLink } from "./Header";
 
 const ProductCard = ({ name, id, image, weight, region, price, handler }) => {
   return (
@@ -27,8 +28,11 @@ const ProductCard = ({ name, id, image, weight, region, price, handler }) => {
 };
 
 const Products = () => {
+  const location = useLocation();
   const [coffee, setCoffee] = useState([]);
   const [filteredCoffee, setFilteredCoffee] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5; // Number of items per page
   const { region } = useParams();
 
   const fetchCoffee = async () => {
@@ -42,6 +46,7 @@ const Products = () => {
   useEffect(() => {
     if (region) {
       filterCoffee(region);
+      setCurrentPage(1);
     } else {
       setFilteredCoffee(coffee);
     }
@@ -54,6 +59,39 @@ const Products = () => {
       const filtered = coffee.filter((cof) => cof.region === region);
       setFilteredCoffee(filtered);
     }
+  };
+
+  // Get current items for the current page
+  const indexOfLastItem = currentPage * itemsPerPage; //5
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage; //0
+  const currentItems = filteredCoffee.slice(indexOfFirstItem, indexOfLastItem); // (0-5)
+
+  //Change Pages
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  //Pagination Component
+  const Pagination = ({ itemsPerPage, totalItems, currentPage, paginate }) => {
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    return (
+      <nav>
+        <ul className="pagination">
+          {pageNumbers.map((number) => (
+            <li
+              key={number}
+              className={`page-item ${currentPage === number ? "active" : ""}`}
+            >
+              <button className="page-link" onClick={() => paginate(number)}>
+                {number}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    );
   };
 
   return (
@@ -69,13 +107,29 @@ const Products = () => {
         </p>
       </aside>
       <div className="category">
-        <Link to={"/products/Central America"}>Central America</Link>
-        <Link to={"/products/South America"}>South America</Link>
-        <Link to={"/products/Africa"}>Africa</Link>
-        <Link to={"/products/Asia Pacific"}>Asia Pacific</Link>
+        <NavLink
+          to={"/products/Central America"}
+          icon={"Central America"}
+          active={location.pathname === "/products/Central%20America"}
+        />
+        <NavLink
+          to={"/products/South America"}
+          icon={"South America"}
+          active={location.pathname === "/products/South%20America"}
+        />
+        <NavLink
+          to={"/products/Africa"}
+          icon={"Africa"}
+          active={location.pathname === "/products/Africa"}
+        />
+        <NavLink
+          to={"/products/Asia Pacific"}
+          icon={"Asia Pacific"}
+          active={location.pathname === "/products/Asia%20Pacific"}
+        />
       </div>
       <section className="products_container">
-        {filteredCoffee.map((cof) => (
+        {currentItems.map((cof) => (
           <ProductCard
             key={cof.name}
             id={cof._id}
@@ -87,6 +141,13 @@ const Products = () => {
           />
         ))}
       </section>
+
+      <Pagination
+        itemsPerPage={itemsPerPage}
+        currentPage={currentPage}
+        totalItems={filteredCoffee.length}
+        paginate={paginate}
+      />
     </div>
   );
 };
