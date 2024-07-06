@@ -1,0 +1,112 @@
+.cart {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  gap: 2vmax;
+
+  > main {
+    padding: 2rem;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    > h1 {
+      color: crimson;
+      border: 1px solid black;
+      font: 100 2rem $text1;
+    }
+  }
+  > aside {
+    border-radius: 100px 0 0 100px;
+    background-color: rgb(174, 147, 247);
+    color: white;
+    height: 100%;
+    width: 100%;
+    box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    > h2 {
+      margin: 1rem;
+      font: 100 1.5rem $text1;
+      letter-spacing: 2px;
+
+      &:last-of-type {
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.cartItem {
+  background-color: rgb(252, 207, 148);
+  color: black;
+  width: 100%;
+  border-radius: 10px;
+  margin: 2rem 0;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr 1fr;
+  align-items: center;
+  gap: 0.5vmax;
+  > section {
+    // border: 2px solid red;
+    height: 200px;
+    width: 150px;
+    padding: 0px;
+
+    img {
+      // border: 2px solid black;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease-in-out;
+      &:hover {
+        transform: scale3d(1.3, 1.3, 1.5) rotateZ(-5deg) rotateY(17deg);
+      }
+    }
+  }
+
+  > article {
+    display: flex;
+    flex-direction: column;
+    gap: 2vmax;
+  }
+  > div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    button {
+      width: 30px;
+      height: 30px;
+      border: none;
+      background-color: rgb(160, 128, 247);
+      color: white;
+      border-radius: 9px;
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        background-color: blueviolet;
+      }
+    }
+    p {
+      width: 20px;
+      height: 20px;
+      display: grid;
+      align-items: center;
+      position: relative;
+      left: 4px;
+    }
+  }
+  > svg {
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: inline-block;
+    margin: auto;
+    transition: all 0.3s;
+
+    &:hover {
+      color: crimson;
+    }
+  }
+}

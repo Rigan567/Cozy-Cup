@@ -25,9 +25,11 @@ const Home = () => {
     <div className="home">
       <section>
         <Carousel
+          swipeable={true}
           showIndicators={false}
           showThumbs={false}
           autoPlay={true}
+          autoStart={true}
           infiniteLoop={true}
           showStatus={false}
           interval={3000}

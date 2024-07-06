@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
 import { BsCupHotFill } from "react-icons/bs";
 import { NavLink } from "./Header";
+import { useDispatch } from "react-redux";
 
 const ProductCard = ({ name, id, image, weight, region, price, handler }) => {
   return (
@@ -21,7 +22,14 @@ const ProductCard = ({ name, id, image, weight, region, price, handler }) => {
           <BsCupHotFill />
           Show Details
         </Link>
-        <button className="cart_btn">Add to Cart</button>
+        <button
+          className="cart_btn"
+          onClick={() =>
+            handler({ name, price, id, image, weight, region, quantity: 1 })
+          }
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   );
@@ -34,6 +42,7 @@ const Products = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5; // Number of items per page
   const { region } = useParams();
+  const dispatch = useDispatch();
 
   const fetchCoffee = async () => {
     const res = await fetch("https://fake-coffee-api.vercel.app/api");
@@ -92,6 +101,12 @@ const Products = () => {
         </ul>
       </nav>
     );
+  }; //Pagination Component
+
+  //Manage Cart
+  const addToCartHandler = (options) => {
+    dispatch({ type: "addToCart", payload: options });
+    dispatch({ type: "calculatePrice" });
   };
 
   return (
@@ -138,6 +153,7 @@ const Products = () => {
             weight={cof.weight}
             price={cof.price}
             region={cof.region}
+            handler={addToCartHandler}
           />
         ))}
       </section>
