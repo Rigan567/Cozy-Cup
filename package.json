@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "homepage": "./",
+=======
+  "homepage":"./",
+>>>>>>> 5c155054dd13cbe24081927daec2a9a75a46d0f6
   "name": "coffee_shop",
   "version": "0.1.0",
   "private": true,
