@@ -1,0 +1,15 @@
+.navPhone {
+  border: 1px solid red;
+  height: fit-content;
+  position: relative;
+  top: 0%;
+  width: 40%;
+  > #nav_others {
+    position: absolute;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid blue;
+    height: 500px;
+  }
+}

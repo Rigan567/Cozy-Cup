@@ -15,8 +15,11 @@
       justify-content: center;
       align-items: center;
 
-      .carousel .slide {
-        background: none;
+      .carousel {
+        .slide {
+          background: none;
+          // width: 80%;
+        }
       }
 
       .carousel_img {

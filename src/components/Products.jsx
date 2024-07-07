@@ -70,6 +70,33 @@ const Products = () => {
     }
   };
 
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const searchQuery = searchParams.get("search");
+    if (searchQuery) {
+      if (!isNaN(searchQuery)) {
+        filterCoffeeByPrice(searchQuery);
+        setCurrentPage(1);
+      } else {
+        filterCoffeeByName(searchQuery);
+        setCurrentPage(1);
+      }
+    } else {
+      filterCoffee(region);
+    }
+  }, [location.search, region, coffee]);
+
+  const filterCoffeeByName = (query) => {
+    const filtered = coffee.filter((cof) =>
+      cof.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredCoffee(filtered);
+  };
+  const filterCoffeeByPrice = (query) => {
+    const filtered = coffee.filter((cof) => cof.price <= query);
+    setFilteredCoffee(filtered);
+  };
+
   // Get current items for the current page
   const indexOfLastItem = currentPage * itemsPerPage; //5
   const indexOfFirstItem = indexOfLastItem - itemsPerPage; //0

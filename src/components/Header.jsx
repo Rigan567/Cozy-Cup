@@ -1,55 +1,87 @@
 import React, { useState } from "react";
 import { CiSearch, CiShoppingCart, CiHome } from "react-icons/ci";
 import { FaBars } from "react-icons/fa6";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineProduct } from "react-icons/ai";
 
 const Header = () => {
   const location = useLocation();
   const [searchOn, setSearchOn] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      navigate(`/products?search=${searchQuery}`);
+    }
+    setSearchQuery("");
+  };
 
   return (
     <nav>
       <button className="navBtn">
         <FaBars />
       </button>
+      <NavigationBar
+        location={location}
+        searchOn={searchOn}
+        setSearchOn={setSearchOn}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        handleSearch={handleSearch}
+      />
+    </nav>
+  );
+};
 
-      <div className="nav_others">
+export const NavigationBar = ({
+  location,
+  searchOn,
+  setSearchOn,
+  searchQuery,
+  setSearchQuery,
+  handleSearch,
+}) => {
+  return (
+    <div className="nav_others" id="nav_others">
+      <div className={`searchGroup ${searchOn ? "searchOpen" : ""}`}>
         <input
           type="text"
           placeholder="Search Here"
-          className={`search_Box ${searchOn ? "searchOpen" : ""}`}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <NavLink
-          to={"/"}
-          icon={<CiHome />}
-          active={location.pathname === "/"}
-        />
-
-        <NavLink
-          to={"/products"}
-          icon={<AiOutlineProduct />}
-          active={location.pathname === "/products"}
-        />
-        <button
-          className={`search_btn ${searchOn ? "active" : ""}`}
-          onClick={() => setSearchOn(!searchOn)}
-        >
-          <CiSearch />
+        <button type="submit" onClick={handleSearch}>
+          Search
         </button>
-        <NavLink
-          to={"/cart"}
-          icon={<CiShoppingCart />}
-          active={location.pathname === "/cart"}
-        />
       </div>
-    </nav>
+      <NavLink to={"/"} icon={<CiHome />} active={location.pathname === "/"} />
+
+      <NavLink
+        to={"/products"}
+        icon={<AiOutlineProduct />}
+        active={location.pathname === "/products"}
+      />
+      <button
+        className={`search_btn ${searchOn ? "active" : ""}`}
+        onClick={() => {
+          setSearchOn(!searchOn);
+        }}
+      >
+        <CiSearch />
+      </button>
+      <NavLink
+        to={"/cart"}
+        icon={<CiShoppingCart />}
+        active={location.pathname === "/cart"}
+      />
+    </div>
   );
 };
 
 export const NavLink = ({ to, icon, active }) => {
   return (
-    <Link to={to} className={`nav-link ${active ? `active` : ""}`}>
+    <Link to={to} className={`nav-link ${active ? "active" : ""}`}>
       {icon}
     </Link>
   );

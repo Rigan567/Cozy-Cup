@@ -1,4 +1,6 @@
+@import "colors";
 nav {
+  // border: 2px solid black;
   position: sticky;
   padding: 2px 0;
   // top: 10px;
@@ -10,6 +12,7 @@ nav {
   z-index: 1;
 
   .navBtn {
+    // display: none;
     background: transparent;
     border: none;
     position: relative;
@@ -28,10 +31,13 @@ nav {
   }
 
   > .nav_others {
-    width: 15vmax;
+    width: 100%;
+    margin-right: 2vmax;
+    gap: 1.5vmax;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-items: center;
+    z-index: 1;
 
     .search_btn {
       background: transparent;
@@ -50,21 +56,45 @@ nav {
         }
       }
     }
-    .search_Box {
+    .searchGroup {
       display: none;
-      width: 300px;
-      background-color: rgba(160, 153, 153, 0.425);
-      text-align: center;
-      outline: none;
-      border: none;
-      padding: 8px 1px;
-      border-radius: 20px;
+      justify-content: center;
+      // border: 2px solid red;
+      max-width: fit-content;
       position: absolute;
       right: 20%;
-      transition: all 0.3s ease-in;
       &.searchOpen {
         display: block;
         animation: rightToLeft 0.6s linear alternate;
+      }
+
+      > input {
+        width: 300px;
+        height: 20px;
+        // background-color: rgba(87, 73, 73, 0.562);
+        border: 2px solid rgba(0, 0, 0, 0);
+        border-bottom: 2px solid rgba(0, 0, 0, 0.507);
+        text-align: center;
+        outline: none;
+        // border: none;
+        padding: 6px 1px;
+        border-radius: 5px;
+        color: black;
+        font: 500 1rem $text1;
+        transition: all 0.3s ease-in;
+      }
+      > button {
+        border: none;
+        padding: 6px 3px;
+        border-radius: 0 5px 5px 0;
+        height: 33px;
+        background-color: rgba(63, 224, 125, 0.6);
+        color: white;
+        font: 500 1rem $text1;
+        cursor: pointer;
+        &:hover {
+          background-color: rgba(42, 184, 96, 0.6);
+        }
       }
     }
     .nav-link {
