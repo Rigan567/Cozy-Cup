@@ -1,15 +1,208 @@
 .navPhone {
-  border: 1px solid red;
-  height: fit-content;
-  position: relative;
-  top: 0%;
-  width: 40%;
-  > #nav_others {
+  border-right: 3px solid rgb(10, 10, 10);
+  border-top: 3px solid rgb(10, 10, 10);
+  border-bottom: 3px solid rgb(10, 10, 10);
+  height: 500px;
+  position: absolute;
+  top: 10%;
+  transform: translateX(-100%);
+  // background-color: aliceblue;
+  background-color: rgba(24, 23, 23, 0.2); // Light translucent white
+  backdrop-filter: blur(10px); // Adjust the blur value as needed
+
+  border-radius: 0 20px 20px 0;
+  filter: drop-shadow(5px 4px 5px black);
+  opacity: 0;
+  width: 80px;
+  z-index: 1;
+  transition: all 0.3s;
+  > .nav_others {
     position: absolute;
-    background-color: white;
+    top: 0%;
+    left: 1rem;
+    // background-color: aliceblue;
     display: flex;
     flex-direction: column;
-    border: 2px solid blue;
+    justify-content: space-around;
+    align-items: flex-start;
+    // border: 2px solid blue;
     height: 500px;
+    width: fit-content;
+    .searchGroup {
+      display: none;
+
+      justify-content: center;
+
+      height: fit-content;
+      width: fit-content;
+      // top: 0%;
+      // border: 2px solid red;
+      left: 70px;
+      bottom: 170px;
+      z-index: 100;
+      transform: translateX(-100%);
+      opacity: 0;
+      transition: all 0.5s;
+
+      &.searchOpen {
+        display: block;
+        opacity: 1;
+        transform: translateX(0%);
+        animation: leftToRight 0.4s linear alternate;
+      }
+
+      > input {
+        width: 200px;
+        height: 20px;
+        // background-color: rgba(87, 73, 73, 0.562);
+        border: 2px solid rgba(0, 0, 0, 0);
+        border-bottom: 2px solid rgba(0, 0, 0, 0.507);
+        text-align: center;
+        outline: none;
+        // border: none;
+        padding: 3px 1px;
+        border-radius: 5px 0 0 5px;
+        color: black;
+        font: 500 1rem $text1;
+        cursor: pointer;
+        transition: all 0.3s ease-in;
+      }
+      > button {
+        border: none;
+        padding: 3px 3px;
+        border-radius: 0 5px 5px 0;
+        height: 30px;
+        background-color: rgba(63, 224, 125, 0.6);
+        color: white;
+        font: 500 1rem $text1;
+        position: absolute;
+        top: 0%;
+        left: 205px;
+        cursor: pointer;
+        &:hover {
+          background-color: rgba(42, 184, 96, 0.6);
+        }
+      }
+    }
+    .search_btn {
+      // border: 2px solid black;
+      border-radius: 0px;
+      position: relative;
+      top: 0%;
+      left: 0%;
+
+      &.active {
+        border-bottom: 2px solid var(--color1);
+        background-color: rgba(26, 25, 25, 0.185);
+      }
+      svg {
+        background: transparent;
+        height: 25px;
+        width: 25px;
+        color: white;
+        cursor: pointer;
+        &:hover {
+          color: var(--color1_deep);
+          background-color: rgba(26, 25, 25, 0.185);
+        }
+      }
+    }
+    .nav-link {
+      position: relative;
+      color: white;
+      z-index: 2;
+
+      &:hover {
+        background-color: rgba(26, 25, 25, 0.185);
+      }
+      &.active {
+        border-bottom: 2px solid var(--color1);
+        transform: scale(1.07);
+        > svg {
+          background-color: rgba(26, 25, 25, 0.185);
+        }
+      }
+      > svg {
+        height: 25px;
+        width: 25px;
+        &:hover {
+          color: var(--color1_deep);
+        }
+      }
+
+      &:first-of-type {
+        &::after {
+          content: "Home";
+          display: none;
+          font: 600 1.2rem $text1;
+          position: absolute;
+          top: 0.2rem;
+          left: 2rem;
+        }
+      }
+      &:nth-of-type(2) {
+        &::after {
+          content: "Products";
+          display: none;
+          font: 600 1.2rem $text1;
+          position: absolute;
+          // top: 0.2rem;
+          left: 2rem;
+        }
+      }
+      &:last-of-type {
+        &::after {
+          content: "Cart";
+          display: none;
+          font: 600 1.2rem $text1;
+          position: absolute;
+          // top: 0.2rem;
+          left: 2rem;
+        }
+      }
+    }
+  }
+  div {
+    height: 500px;
+    width: 200px;
+    position: absolute;
+    > button {
+      position: absolute;
+      top: 50%;
+      left: 35%;
+      background: transparent;
+
+      border: none;
+      border-radius: 50%;
+      z-index: 2;
+
+      > svg {
+        color: white;
+        background-color: transparent;
+
+        height: 20px;
+        width: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+          // background-color: aquamarine;
+          color: black;
+        }
+      }
+    }
+  }
+}
+.navPhoneComes {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.navOthersExtends {
+  .nav-link {
+    &:first-of-type {
+      &::after {
+        display: contents;
+      }
+    }
   }
 }

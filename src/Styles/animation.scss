@@ -10,3 +10,17 @@
     transform: scale(1);
   }
 }
+@keyframes leftToRight {
+  from {
+    // left: 0%;
+    // top: 0%;
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    // top: 0%;
+    // left: 80%;
+    opacity: 1;
+    transform: scale(1);
+  }
+}

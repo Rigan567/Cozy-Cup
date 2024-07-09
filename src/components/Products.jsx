@@ -3,6 +3,7 @@ import { Link, useParams, useLocation } from "react-router-dom";
 import { BsCupHotFill } from "react-icons/bs";
 import { NavLink } from "./Header";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const ProductCard = ({ name, id, image, weight, region, price, handler }) => {
   return (
@@ -113,7 +114,7 @@ const Products = () => {
     }
 
     return (
-      <nav>
+      <div>
         <ul className="pagination">
           {pageNumbers.map((number) => (
             <li
@@ -126,7 +127,7 @@ const Products = () => {
             </li>
           ))}
         </ul>
-      </nav>
+      </div>
     );
   }; //Pagination Component
 
@@ -134,6 +135,7 @@ const Products = () => {
   const addToCartHandler = (options) => {
     dispatch({ type: "addToCart", payload: options });
     dispatch({ type: "calculatePrice" });
+    toast.success("Added to Cart Successfully!");
   };
 
   return (

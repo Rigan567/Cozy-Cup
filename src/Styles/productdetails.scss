@@ -1,10 +1,4 @@
 .productDetails {
-  h1 {
-    font: 600 2.5rem $text1;
-    margin-top: 1vmax;
-    text-align: center;
-    // border: 1px solid black;
-  }
   #back {
     position: relative;
     top: 0;
@@ -17,6 +11,12 @@
       height: 30px;
       width: 30px;
     }
+  }
+  > h1 {
+    font: 600 2.5rem $text1;
+    margin-top: 1vmax;
+    text-align: center;
+    // border: 1px solid black;
   }
 
   > div {
