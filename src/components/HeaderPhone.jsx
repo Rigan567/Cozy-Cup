@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavigationBar } from "./Header";
 import { useLocation, useNavigate } from "react-router-dom";
-import { BsArrowRightCircle } from "react-icons/bs";
+// import { BsArrowRightCircle } from "react-icons/bs";
 import { useSelector } from "react-redux";
 
 const HeaderPhone = ({
@@ -18,9 +18,12 @@ const HeaderPhone = ({
   const { cartItems } = useSelector((state) => state.cart);
   const navigate = useNavigate();
 
+  // console.log("Cart Items in HeaderPhone:", cartItems); // Add this line
+
   const handleSearch = () => {
     if (searchQuery.trim()) {
       navigate(`/products?search=${searchQuery}`);
+      setMenuOpen(false);
     }
     setSearchQuery("");
   };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { CiSearch, CiShoppingCart, CiHome } from "react-icons/ci";
 import { FaBars } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -18,6 +18,7 @@ const Header = ({
   const location = useLocation();
   const { cartItems } = useSelector((state) => state.cart);
   const navigate = useNavigate();
+  // console.log("Cart Items in Header:", cartItems); // Add this line
 
   const handleSearch = () => {
     if (searchQuery.trim()) {
@@ -61,6 +62,8 @@ export const NavigationBar = ({
   setSubMenu,
   cartItems,
 }) => {
+  // console.log("Cart Items in NavigationBar:", cartItems); // Add this line
+
   return (
     <div className={`nav_others ${subMenu ? "navOthersExtends" : ""}`}>
       <div className={`searchGroup ${searchOn ? "searchOpen" : ""}`}>
@@ -105,8 +108,6 @@ export const NavigationBar = ({
       {cartItems?.length > 0 && (
         <p className="cart_count">{cartItems.length}</p>
       )}
-
-      {/* <p>{cartItems.length}</p> */}
     </div>
   );
 };
@@ -116,7 +117,7 @@ export const NavLink = ({ to, icon, active, setMenuOpen }) => {
     <Link
       to={to}
       className={`nav-link ${active ? "active" : ""}`}
-      onClick={() => setMenuOpen(false)}
+      // onClick={() => setMenuOpen(false)}
     >
       {icon}
     </Link>

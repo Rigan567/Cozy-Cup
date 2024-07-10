@@ -12,12 +12,14 @@
     }
     > h1 {
       color: crimson;
-      border: 1px solid black;
+
+      text-align: center;
       font: 100 2rem $text1;
     }
   }
   > aside {
     border-radius: 100px 0 0 100px;
+
     background-color: rgb(174, 147, 247);
     color: white;
     height: 100%;

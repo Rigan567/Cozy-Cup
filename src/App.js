@@ -2,12 +2,7 @@ import "./Styles/app.scss";
 import Header from "./components/Header";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useNavigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
 import Products from "./components/Products";
@@ -20,6 +15,8 @@ function App() {
   const [subMenu, setSubMenu] = useState(false);
   const [searchOn, setSearchOn] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+
+  // document.body.addEventListener("click", () => setMenuOpen(false));
 
   return (
     <div className="App">

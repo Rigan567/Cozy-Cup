@@ -7,6 +7,7 @@ const Cart = () => {
     (state) => state.cart
   );
   const dispatch = useDispatch();
+  // console.log("Cart Items:", cartItems);
 
   const increment = (id) => {
     dispatch({
