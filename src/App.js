@@ -9,6 +9,7 @@ import Products from "./components/Products";
 import ProductDetails from "./components/ProductDetails";
 import HeaderPhone from "./components/HeaderPhone";
 import { useState } from "react";
+import Footer from "./components/Footer";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -48,6 +49,7 @@ function App() {
           <Route path="/products/:region" element={<Products />} />
           <Route path="/productdetails/:id_no" element={<ProductDetails />} />
         </Routes>
+        <Footer />
       </Router>
       <ToastContainer />
     </div>

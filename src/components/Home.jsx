@@ -25,14 +25,13 @@ const Home = () => {
     <div className="home">
       <section>
         <Carousel
-          swipeable={true}
           showIndicators={false}
-          showThumbs={false}
-          autoPlay={true}
-          autoStart={true}
-          infiniteLoop={true}
           showStatus={false}
+          showThumbs={false}
           interval={3000}
+          infiniteLoop={true}
+          autoPlay={true}
+          showArrows={true}
           transitionTime={1000}
         >
           {products.map((product, index) => (

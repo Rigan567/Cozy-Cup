@@ -24,3 +24,8 @@
     transform: scale(1);
   }
 }
+@keyframes rotation {
+  to {
+    transform: rotate(360deg);
+  }
+}
